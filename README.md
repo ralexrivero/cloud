@@ -62,11 +62,18 @@
 
 > build
 
-`docker build -t trusty-c:1.0 .`
+`docker tag trusty-c:1.0 ralexrivero/trusty-c:1.0`
+`docker push ralexrivero/trusty-c:1.0`
+`docker pull ralexrivero/trusty-c:1.0`
 
 > run
 
 `docker run -v /mnt/code/repos/:/repos -it --rm --name my-trusty trusty-c:1.0`
+
+> use registry
+
+`docker tag ralexrivero/trusty-c:1.0`
+
 
 ## Author
 
