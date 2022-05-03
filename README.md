@@ -49,6 +49,25 @@
 - `docker push ralexrivero/gcc-c:1.0`
 - `docker pull ralexrivero/gcc-c:1.0`
 
+### trusty-c
+
+`ubuntu:trusty`
+`vim`
+`valgrind`
+`gcc`
+`g++`
+`makefile`
+`git`
+`Betty repository`
+
+> build
+
+`docker build -t trusty-c:1.0 .`
+
+> run
+
+`docker run -v /mnt/code/repos/:/repos -it --rm --name my-trusty trusty-c:1.0`
+
 ## Author
 
 <!-- twitter -->
