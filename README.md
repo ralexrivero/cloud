@@ -63,8 +63,6 @@
 > build
 
 `docker tag trusty-c:1.0 ralexrivero/trusty-c:1.0`
-`docker push ralexrivero/trusty-c:1.0`
-`docker pull ralexrivero/trusty-c:1.0`
 
 > run
 
@@ -73,7 +71,8 @@
 > use registry
 
 `docker tag ralexrivero/trusty-c:1.0`
-
+`docker push ralexrivero/trusty-c:1.0`
+`docker pull ralexrivero/trusty-c:1.0`
 
 ## Author
 
