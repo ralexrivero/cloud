@@ -74,6 +74,9 @@
 `docker push ralexrivero/trusty-c:1.0`
 `docker pull ralexrivero/trusty-c:1.0`
 
+> open other prompt
+`docker exec -it my-trusty bash`
+
 ## Author
 
 <!-- twitter -->
