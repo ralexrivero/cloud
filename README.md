@@ -36,7 +36,7 @@
 
 > build
 
-- `docker build -t gcc-c:1.0 .`
+- `docker build -t gcc-c:1.0 .` notice the dot `.` at the end
 
 > run
 
@@ -76,6 +76,24 @@
 
 > open other prompt
 `docker exec -it my-trusty bash`
+
+### node:16-alpine - custom
+
+- `node:16-alpine`
+- `vim`
+- `semistandard`
+
+> build
+
+`docker build -t node-16-alp:1.0 .`
+
+> run
+
+- `docker run -v /mnt/code/repos/:/repos -it --rm --name my-node-16-alp node-16-alp:1.0`
+
+> open prompt
+
+- `docker exec -it my-node-16-alp sh`
 
 ## Author
 
