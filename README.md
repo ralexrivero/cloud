@@ -85,15 +85,15 @@
 
 > build
 
-`docker build -t node-16-alp:1.0 .`
+`docker build -t node-alp-16:1.0 .`
 
 > run
 
-- `docker run -v /mnt/code/repos/:/repos -it --rm --name my-node-16-alp node-16-alp:1.0`
+- `docker run -v /mnt/code/repos/:/repos --network=host -d -it --rm --user node --name node-alp-app node-alp-16:1.0`
 
 > open prompt
 
-- `docker exec -it my-node-16-alp sh`
+- `docker exec -it my-node-alp-app sh`
 
 ## Author
 

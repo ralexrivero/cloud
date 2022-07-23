@@ -1,6 +1,5 @@
 FROM node:16-alpine
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install vim -y
-RUN npm install -g npm
-RUN install semistandard -y
+RUN npm i vim --location=global
+RUN npm install --location=global npm
+RUN npm install --location=global semistandard -y
