@@ -95,6 +95,12 @@
 
 - `docker exec -it my-node-alp-app sh`
 
+## Python Django
+
+- `docker build -t python-django:1.0 .`
+- `docker run -v /mnt/code/repos/:/repos -d -it --rm --name py-dj python-django:1.0`
+- `docker exec -it py-dj sh`
+
 ## Author
 
 <!-- twitter -->
