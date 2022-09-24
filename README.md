@@ -100,6 +100,8 @@
 - `docker build -t python-django:1.0 .`
 - `docker run -v /mnt/code/repos/:/repos --network=host -d -it --rm --name py-dj python-django:1.0`
 - `docker exec -it py-dj sh`
+- `docker tag python-django:1.0 ralexrivero/python-django:1.0`
+- `docker push ralexrivero/python-django:1.0` push to registry
 
 ## Author
 
