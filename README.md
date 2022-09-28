@@ -105,6 +105,7 @@
 
 ## PostgreSql
 
+- `docker pull postgres`
 - `docker run --name postgre-app -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
 - `docker exec -it postgre-app psql -U postgres`
 
