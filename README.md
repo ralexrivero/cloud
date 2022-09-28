@@ -103,6 +103,11 @@
 - `docker tag python-django:1.0 ralexrivero/python-django:1.0`
 - `docker push ralexrivero/python-django:1.0` push to registry
 
+## PostgreSql
+
+- `docker run --name postgre-app -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
+- `docker exec -it postgre-app psql -U postgres`
+
 ## Author
 
 <!-- twitter -->
