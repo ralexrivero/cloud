@@ -21,11 +21,12 @@
 
 ## Images
 
-[Docker images](./images.md)
-[Docker guide](./docker.md)
-# Kubernetes
+- [Docker images](./images.md)
+- [Docker guide](./docker.md)
 
-[Kubernetes guide](./kubernetes.md)
+## Kubernetes
+
+- [Kubernetes guide](./kubernetes.md)
 
 ## Author
 
