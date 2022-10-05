@@ -51,6 +51,11 @@ CMD node app.js
 - `docker stop $(docker ps -q)` - stop all containers
 - `docker rm $(docker ps -aq)` - remove all containers
 
-## IBM registry
+### IBM registry
 
 [IBM Registry](https://cloud.ibm.com/registry/start)
+
+## Orchestration
+
+> Container orchestration is a process that automates the container lifecycle of contanarized applications.
+
