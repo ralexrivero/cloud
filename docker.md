@@ -1,4 +1,13 @@
-# Containers
+# Docker images
+
+```Dockerfile
+██████╗  ██████╗  ██████╗██╗  ██╗███████╗██████╗
+██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+██║  ██║██║   ██║██║     █████╔╝ █████╗  ██████╔╝
+██║  ██║██║   ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+██████╔╝╚██████╔╝╚██████╗██║  ██╗███████╗██║  ██║
+╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+```
 
 ## Dockerfile
 
@@ -54,8 +63,3 @@ CMD node app.js
 ### IBM registry
 
 [IBM Registry](https://cloud.ibm.com/registry/start)
-
-## Orchestration
-
-> Container orchestration is a process that automates the container lifecycle of contanarized applications.
-
