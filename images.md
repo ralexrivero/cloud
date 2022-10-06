@@ -91,6 +91,7 @@
 - `docker exec -it py-dj sh`
 - `docker tag python-django:1.0 ralexrivero/python-django:1.0`
 - `docker push ralexrivero/python-django:1.0` push to registry
+- `docker run --network
 
 ## PostgreSql
 
