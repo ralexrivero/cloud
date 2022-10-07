@@ -25,6 +25,10 @@
 - [Docker images](./images.md)
 - [Docker guide](./docker.md)
 
+## Docker compose
+
+- [Docker Compose](./compose.md)
+
 ## Kubernetes
 
 - [Kubernetes guide](./kubernetes.md)
