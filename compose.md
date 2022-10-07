@@ -28,3 +28,8 @@
   - `build`
   - `create`
   - `start`
+
+## Variables
+
+- Environment variables: accesible inside de Docker container
+- Build arguments: Accessible only at build time

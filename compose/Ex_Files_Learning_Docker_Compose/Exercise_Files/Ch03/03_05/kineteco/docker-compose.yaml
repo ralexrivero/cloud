@@ -5,14 +5,14 @@ services:
     build: scheduler/.
     ports:
       - "81:80"
-  storefront: 
+  storefront:
     build: storefront/.
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - database
-  database: 
+  database:
     image: "mysql"
     env_file:
       - ./mysql/env_vars
@@ -20,4 +20,4 @@ services:
       - ./mysql:/docker-entrypoint-initdb.d:ro
       - kineteco:/var/lib/mysql
 volumes:
-  kineteco: 
+  kineteco:
