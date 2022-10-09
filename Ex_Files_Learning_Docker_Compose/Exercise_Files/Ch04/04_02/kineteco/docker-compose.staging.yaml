@@ -1,7 +1,0 @@
-services:
-  scheduler:
-    environment:
-      - runtime_env=staging
-  storefront:
-    environment:
-      - runtime_env=staging
