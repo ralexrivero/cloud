@@ -15,3 +15,15 @@
 - `echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check` to validate binary
 - `sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl`
 - `kubectl version --client`
+
+## install minikube
+
+- `curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb`
+- `sudo dpkg -i minikube_latest_amd64.deb`
+
+## create a cluster
+
+- `minikube start`
+- `kubectl cluster-info`
+- `kubectl create deployment nodeapplication2 --image=node:16-alpine`
+- `kubectl get deployments`
