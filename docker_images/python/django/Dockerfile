@@ -1,7 +1,8 @@
-FROM python:3.11.0rc2-alpine3.16
+FROM python:alpine
 
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
-RUN python -m pip install Django
-RUN pip install psycopg2
-RUN pip install django-seed
-RUN pip install pycodestyle
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+WORKDIR /code
+COPY requirements.txt /code/
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt

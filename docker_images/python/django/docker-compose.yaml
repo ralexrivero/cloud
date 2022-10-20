@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  backend:
+    container_name: dj
+    build: .
+    volumes:
+      - ./:/code
+volumes:
+  code:
