@@ -63,3 +63,7 @@ CMD node app.js
 ### IBM registry
 
 [IBM Registry](https://cloud.ibm.com/registry/start)
+
+### Docker volumes
+
+- The recommended way to presist data, stored at `/var/lib/docker/volumes/`
