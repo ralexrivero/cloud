@@ -67,3 +67,27 @@ CMD node app.js
 ### Docker volumes
 
 - The recommended way to presist data, stored at `/var/lib/docker/volumes/`
+
+## basics configuration
+
+- `version` - version of the docker-compose file
+- `services` - all the containers the system must run
+- `build` - the path to the Dockerfile. `.` indicates current directory of the docker-compose file
+
+```yaml
+version: '3.9'
+
+services:
+    web:
+        build: .
+    data:
+        build: mysql
+```
+
+## Commands
+
+- `up` - `build`, `create` and `start` the containers
+- `down` - `stop`, delete all containers, images and artifacts
+- `stop` - stop the containers
+- `rm` - delete the containers
+- `restart` - `stop` and `start`, useful for fixing random system errors
