@@ -9,85 +9,165 @@
 ╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 ```
 
-## Dockerfile
+## run
 
-- create a `Dockerfile` in the root of the project
+Containers have a main process, the container stops when that proces stops
 
-```Dockerfile
-FROM alpine
-CMD ["echo", "Hello World!"]
+### --rm
+
+Remove the container when it stops
+
+- `docker run --rm -it alpine sh`
+
+### sleep
+
+- `docker run --rm -it alpine sleep 5`
+- sleeps for 5 seconds and then stops
+
+## -c "command"
+
+- `docker run --rm -it alpine sh -c "sleep 5; echo bye!"`
+- sleeps for 5 seconds and then prints bye!
+
+## ti
+
+- `docker run -ti alpine sh` terminal interactive mode
+
+## detached
+
+- `docker run --rm -d alpine sleep 5`
+- runs in the background
+
+- `ctl + p + q`
+- detach from the container without stopping it
+
+## attach
+
+- `docker attach <container_id>`
+- attach to a running container
+
+## exec
+
+- `docker exec -it <container_id> sh`
+- attach to a running container
+- if the original container is stopped, this will stop as well
+
+## ps
+
+- `docker ps` - list running containers
+- `docker ps -a` - list all containers
+- `docker ps -l` - list last created container
+- format the output
+- `docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Size}}"`
+
+```sh
+CONTAINER ID   NAMES            IMAGE           STATUS         PORTS     SIZE
+8d1a1888e316   stoic_einstein   alpine:latest   Up 8 minutes             8B (virtual 5.54MB)
 ```
 
-- `docker build -t my-app:v1.0 .` notice the dot `.` for the current directory
-- `docker run my-app:v1.0`
+- `docker ps --format $FORMAT`
+- `docker ps -a --format $FORMAT`
 
-```bash
-docker run my-app:v1.0
-Hello World!
+```sh
+export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\nSTATUS\t{{.Status}}\nPORTS\t{{.Ports}}\nNAMES\t{{.Names}}\n"
 ```
 
-### Dockerfile instructions
-
-- `FROM` - base image
-- `RUN` - execute arbitrary commands
-- `CMD` - default command to run, should have only one or only the last will be executed
-
-> Every instruction creates a new layer, the more layers the bigger the image
-
-```Dockerfile
-FROM node:9.4.0-alpine
-COPY app.js .
-COPY package.json .
-RUN npm install &&\
-    apk update &&\
-    apk upgrade
-EXPOSE  8080
-CMD node app.js
+```sh
+ID	8d1a1888e316
+IMAGE	alpine:latest
+COMMAND	"sh"
+CREATED	10 minutes ago
+STATUS	Up 10 minutes
+PORTS
+NAMES	stoic_einstein
 ```
 
-- `docker run -dp 8080:8080 myimage:v1`
+## commit
 
-### Dockerfile Commands
+create image from container
 
-- The `FROM` instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon.
-- The `COPY` command enables us to copy files to our image.
-- The `RUN` instruction executes commands.
-- The `EXPOSE` instruction exposes a particular port with a specified protocol inside a Docker Container.
-- The `CMD` instruction provides a default for executing a container, or in other words, an executable that should run in your container.
+- `docker commit container_id` basic usage
+- `docker commit -m "message" -a "author" container_id image_name:tag`
 
-### commands
+## tag
 
-- `docker stop $(docker ps -q)` - stop all containers
-- `docker rm $(docker ps -aq)` - remove all containers
+- `docker tag image_id image_name:tag`
 
-### IBM registry
+## logs
 
-[IBM Registry](https://cloud.ibm.com/registry/start)
+- `docker logs container_name` - show logs from container
 
-### Docker volumes
+## kill
 
-- The recommended way to presist data, stored at `/var/lib/docker/volumes/`
+- `docker kill container_name` - kill a running container
 
-## basics configuration
+## docker rm
 
-- `version` - version of the docker-compose file
-- `services` - all the containers the system must run
-- `build` - the path to the Dockerfile. `.` indicates current directory of the docker-compose file
+- `docker rm container_name` - remove a container
 
-```yaml
-version: '3.9'
+## Resource constraints
 
-services:
-    web:
-        build: .
-    data:
-        build: mysql
-```
+- `docker run --rm -it --cpus 0.5 alpine sh` - limit cpu usage
+- `docker run --memory maximum-allowed-memory image-name command` - limit memory usage
+- `docker run --cpu-shares` - limit cpu usage
+- `docker run --cpu-quota` - limit cpu usage
 
-## Commands
+## publish
 
-- `up` - `build`, `create` and `start` the containers
-- `down` - `stop`, delete all containers, images and artifacts
-- `stop` - stop the containers
-- `rm` - delete the containers
-- `restart` - `stop` and `start`, useful for fixing random system errors
+- publish a port to expose it to the host
+- `docker run --rm -ti -p 45678 -p 45679 alpine sh` - publish ports and docker will choose an dinamical asigned port
+- `docker port container_name` - show port mappings
+- can explicit the protocol UDP/TCP
+- `docker run -p 45678:45678/udp`
+
+## Container networking
+
+- `docker network ls`
+
+- `bridge` - default network
+- `host` - use host network stack, has security concerns
+- `none` - no networking
+
+- `docker network create network_name` - create a network
+- `docker network create --driver bridge network_name` - create a network with a specific driver
+- `docker network inspect network_name` - inspect a network
+- put containers into the network
+- `docker run --rm -it --network network_name alpine --name server01 sh`
+- `docker run --rm -it --network network_name alpine --name server02 sh`
+- from server01
+- `ping server02`
+
+## legacy linking
+
+> Legacy linking works by connecting ports on one machine to all the ports on the other machine
+
+- only works in one direction
+- avoid using it
+- `docker run --rm -it -e SECRET=123 --name mysql mysql:5.7`
+- `-e` - set environment variable
+- `docker run --rm -it --link mysql:db alpine sh` - link mysql container to alpine container
+
+## images
+
+- `docker images` - list images
+- `docker images ls` - list images
+- `docker rmi image_name` - remove image
+
+## volumes
+
+- share files or directories between host and container
+- `docker run -ti -v /home/code:/shared-folder alpine sh` - mount a volume
+
+- ephemeral volumes
+- volumes from
+- `docker run -v /shared-data --name sharing alpine sh`
+- `docker run -ti --volumes-from sharing alpine sh` - mount a volume from another container
+
+## registry
+
+- search for images
+
+- `docker search image_name` - search for images
+- `docker login` - login to docker hub
+- `docker tag image_name username/image_name:tag` - tag an image
+- `docker push username/image_name:tag` - push image to docker hub
