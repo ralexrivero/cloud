@@ -171,3 +171,16 @@ create image from container
 - `docker login` - login to docker hub
 - `docker tag image_name username/image_name:tag` - tag an image
 - `docker push username/image_name:tag` - push image to docker hub
+
+## build
+
+> build images from `Dockerfile`
+
+- `docker build -t image_name:tag .` - build image from Dockerfile, the dot denotes the current directory, or replace with the path to the Dockerfile
+
+> every step in the Dockerfile is cached to speed up the build process
+
+```Dockerfile
+FROM busybox
+RUN echo "Building simple docker image"
+```
