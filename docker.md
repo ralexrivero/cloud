@@ -184,3 +184,67 @@ create image from container
 FROM busybox
 RUN echo "Building simple docker image"
 ```
+
+### statements
+
+#### FROM
+
+- what image use to start running from
+- allways the first statement
+
+#### MAINTAINER
+
+- who maintains the image
+- MAINTAINER Firstname Lastname <email@example.com>
+
+#### RUN
+
+- run a command, waits it to finish, and saves the result
+- RUN <command>
+
+#### ADD
+
+- copy files from the host to the container
+- ADD <src> <dest>
+- add the contents of tar archives, automatically uncompress in the destination
+- add remote files using URLs
+- ADD https://example.com/file.tar.gz /tmp/
+
+#### ENV
+
+- set environment variables
+- both during the build and when running the result
+- ENV DB_PORT=5432
+
+#### ENTRYPOINT
+
+- specify the start of the command to run
+- everything typed when run image would be treated as arguments of the command
+
+#### CMD
+
+- specify the whole command to run, can be overwritten when running the image
+- the arguments replace the CMD command
+
+#### EXPOSE
+
+- expose a port to the host
+- EXPOSE <port>
+
+#### VOLUME
+
+- create a mount point for a volume
+- VOLUME <path> for ephemeral volumes
+- VOLUME <path>:<path> for persistent volumes
+
+#### WORKDIR
+
+- set the working directory
+- WORKDIR <path>
+
+#### USER
+
+- set the user to run the commands
+- USER <user
+
+[https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
