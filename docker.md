@@ -248,3 +248,28 @@ RUN echo "Building simple docker image"
 - USER <user
 
 [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
+
+## Multi-stage builds
+
+- multi stage reduce drastically the size of the image
+
+```Dockerfile
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get -y install curl
+RUN curl https://google.com | wc -c > google-size
+ENTRYPOINT echo google is this big; cat google-size
+```
+
+- Dockerfile is splitted into named parts and copied to the same path, which preserves the ability to have a reproducible build
+
+```Dockerfile
+FROM ubuntu:16.04 as builder
+RUN apt-get update
+RUN apt-get -y install curl
+RUN curl https://google.com | wc -c > google-size
+
+FROM alpine
+COPY --from=builder /google-size /google-size
+ENTRYPOINT echo google is this big; cat google-size
+```
