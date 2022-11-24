@@ -277,3 +277,42 @@ ENTRYPOINT echo google is this big; cat google-size
 ## Process
 
 - `docker inspect --format '{{.State.Pid}}' container_name` - get the process id of a container
+
+## Namespaces
+
+- namespaces provides isolation between the host and the running containers
+
+- `ps -ef` - show all processes
+- `ip addr` - show all network interfaces
+
+## enables on boot
+
+- `systemctl status docker` - check if docker is running
+- `sudo systemctl enable docker` - enable docker on boot
+- `sudo systemctl disable docker` - disable docker on boot
+
+## backign up Docker
+
+- Docker swarm cluster
+- Universal Control Plane
+- Docker Trusted Registry
+- Container volume data
+
+- `systemctl stop docker` - stop docker
+- `cd /var/lib/docker` - go to docker data directory
+- `tar -czvf docker-backup.tar.gz .` - create a backup
+- `cp docker-backup.tar.gz /home/backup` - copy backup to another location
+- `tar -xzvf docker-backup.tar.gz` - restore backup
+- `systemctl start docker` - start docker
+
+## backing up UCP
+
+- use the oficial documentation to get the command
+
+## backing up DTR
+
+- back up DTR metadata
+
+## Container volume Data
+
+- `docker volume ls` - list volumes
