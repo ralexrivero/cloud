@@ -273,3 +273,7 @@ FROM alpine
 COPY --from=builder /google-size /google-size
 ENTRYPOINT echo google is this big; cat google-size
 ```
+
+## Process
+
+- `docker inspect --format '{{.State.Pid}}' container_name` - get the process id of a container
