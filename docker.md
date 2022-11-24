@@ -316,3 +316,19 @@ ENTRYPOINT echo google is this big; cat google-size
 ## Container volume Data
 
 - `docker volume ls` - list volumes
+
+## Docker status
+
+- `docker version` - if shows the version, docker can talk to the server
+- `docker info` - show docker info
+- `docker ps` - show running containers
+- `docker ps -a` - show all containers running and stopped
+- `docker node ls` - show nodes in the swarm, only valid if running on a manager
+- `docker service ls` - show services running in the swarm, only valid if running on a manager
+
+## loggin for prduction
+
+- `docker info | grep 'Logging Driver'
+- `docker logs container_name` - show logs on a specific container
+- `docker logs -f container_name` - show logs on a specific container and follow
+- `docker run --log-driver=syslog --log-opt syslog-addres=udp://1.1.1.1. alpine` - run a container with syslog driver, and send logs to the syslog server
