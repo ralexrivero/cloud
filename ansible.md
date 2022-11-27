@@ -81,3 +81,10 @@ ansible_python_interpreter=/usr/bin/python3
 - run the playbook locally
 
 - `ansible-playbook -i hosts initial.yml`
+
+- `ssh-copy-id`
+- `ssh ubuntu@server1 -i ~/.ssh/id_rsa`
+
+- `ssh root@157.230.83.162 -i tify`
+- `ssh root@137.184.224.245 -i tify`
+- `ssh root@143.244.176.7 -i tify`
