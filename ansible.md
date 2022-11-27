@@ -46,3 +46,38 @@ ansible_python_interpreter=/usr/bin/python3
 - `ansible all -m apt -a "name=nginx state=present" -u root` to install nginx
 - `ansible servers -a "uptime" -u root` to check uptime on servers group
 - `ansible server1:server2 -m ping -u root` specify multiple hosts
+
+## Setup workspace and Ansible inventory file
+
+- create a directory for the project
+
+- `mkdir kube-cluster`
+- `cd kube-cluster`
+
+- crate the initial.yml file
+
+- `vim initial.yml`
+
+```yaml
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: create the 'ubuntu' user
+      user: name=ubuntu append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'ubuntu' to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'ubuntu ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the ubuntu user
+      authorized_key: user=ubuntu key="{{item}}"
+      with_file:
+        - ~/.ssh/id_rsa.pub
+```
+
+- run the playbook locally
+
+- `ansible-playbook -i hosts initial.yml`
