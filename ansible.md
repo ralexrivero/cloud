@@ -92,3 +92,8 @@ ansible_python_interpreter=/usr/bin/python3
 - `ansible-playbook -i hosts ~/code/kube-cluster/kube-dependencies.yml` installs kubeadm and kubectl
 
 - `ansible-playbook -i hosts ~/code/kube-cluster/control-plane.yml` to install flannel
+
+- ssh into the control plane
+- `kubectl get nodes` to check the status of the nodes
+
+- `sudo kubeadm init --pod-network-cidr=10.244.0.0/16`
