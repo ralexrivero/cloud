@@ -80,11 +80,15 @@ ansible_python_interpreter=/usr/bin/python3
 
 - run the playbook locally
 
-- `ansible-playbook -i hosts initial.yml`
+- `ssh-add tify` to add the ssh key to the ssh-agent
+- `ansible-playbook -i hosts initial.yml` to run the playbook and add ubuntu user
 
-- `ssh-copy-id`
-- `ssh ubuntu@server1 -i ~/.ssh/id_rsa`
+- Install kubernetes dependencies
+  - `Docker`
+  - `kubeadm`
+  - `kubelet`
+  - `kubeclt`
 
-- `ssh root@157.230.83.162 -i tify`
-- `ssh root@137.184.224.245 -i tify`
-- `ssh root@143.244.176.7 -i tify`
+- `ansible-playbook -i hosts ~/code/kube-cluster/kube-dependencies.yml` installs kubeadm and kubectl
+
+- `ansible-playbook -i hosts ~/code/kube-cluster/control-plane.yml` to install flannel
