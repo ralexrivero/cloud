@@ -2,6 +2,10 @@
 
 Ansible is a configuration management tool that allows you to automate the configuration of your servers. It is a simple tool that can be used to configure a single server or a large number of servers.
 
+## requirements
+
+- The servers need at least 2 virtual CPUs and 2GB of RAM to run Ansible.
+
 ## Installation
 
 Ansible is available in the Ubuntu repositories. To install it, run the following command:
