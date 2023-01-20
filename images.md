@@ -167,6 +167,11 @@ services:
 
 - `docker exec -it my-node-alp-app sh`
 
+### 18-apline
+
+- `docker run -d -it --rm --name node -v /home/ralex/code:/code --publish 3000:3000 --user node node-alp:1.1`
+- `docker exec -it node sh`
+
 ## Python Django
 
 - `docker build -t python-django:1.0 .`
