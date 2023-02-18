@@ -46,7 +46,7 @@ EXPOSE  8080
 CMD node app.js
 ```
 
-- `docker run -dp 8080:8080 myimage:v1`
+- `docker run -d p 8080:8080 myimage:v1`
 
 ### Dockerfile Commands
 
